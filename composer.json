@@ -9,6 +9,7 @@
         "guzzlehttp/guzzle": "^7.2",
         "laravel/breeze": "^1.29",
         "laravel/framework": "^10.10",
+        "laravel/prompts": "^0.1.16",
         "laravel/sanctum": "^3.3",
         "laravel/tinker": "^2.8",
         "livewire/livewire": "^3.4"
