@@ -6,7 +6,7 @@ use Livewire\Component;
 
 class CreateStudent extends Component
 {
-    public $first_name,$middle_name,$last_name,$birth_date,
+    public $first_name,$middle_name,$last_name,$birth_date,$address,
     $email,$class_id,$section_id;
 
     public function render()

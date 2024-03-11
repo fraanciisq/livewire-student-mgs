@@ -41,11 +41,20 @@
                                 @enderror
                             </div>
 
-                            <div class="col-span-6 sm:col-span-6">
+                            <div class="col-span-6 sm:col-span-3">
                                 <label for="birth_date" class="block text-sm font-medium text-gray-700">Birth Date</label>
                                 <input type="date" id="birth_date" wire:model="birth_date"
                                     class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm @error('birth_date') text-red-900 focus:ring-red-500 focus:border-red-500 border-red-300 @enderror" />
                                 @error('birth_date')
+                                    <p class="mt-1 text-sm text-red-500">{{ $message }}</p>
+                                @enderror
+                            </div>
+
+                            <div class="col-span-6 sm:col-span-3">
+                                <label for="address" class="block text-sm font-medium text-gray-700">Address</label>
+                                <input type="text" id="address" wire:model="address"
+                                    class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm @error('last_name') text-red-900 focus:ring-red-500 focus:border-red-500 border-red-300 @enderror" />
+                                @error('address')
                                     <p class="mt-1 text-sm text-red-500">{{ $message }}</p>
                                 @enderror
                             </div>
