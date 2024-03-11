@@ -32,6 +32,10 @@
                                         </th>
                                         <th scope="col"
                                             class="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 sm:pl-6">
+                                            Photo
+                                        </th>
+                                        <th scope="col"
+                                            class="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 sm:pl-6">
                                             First Name
                                         </th>
                                         <th scope="col"
@@ -46,10 +50,7 @@
                                             class="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 sm:pl-6">
                                             Birthdate
                                         </th>
-                                        <th scope="col"
-                                            class="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 sm:pl-6">
-                                            Photo
-                                        </th>
+                                  
                                         <!-- <th scope="col"
                                             class="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 sm:pl-6">
                                             Address
@@ -76,6 +77,13 @@
                                                 class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-6">
                                                 {{ $student->id }}
                                             </td>
+                                            <td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-6">
+                                              @if($student->photo)
+                                                <img src="data:image/jpeg;base64,{{ base64_encode($student->photo) }}" alt="Student Photo" class="h-10 w-10 rounded-full">
+                                                @else
+                                            <span>No Photo Available</span>
+                                                 @endif
+                                                </td>
                                             <td
                                                 class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-6">
                                                 {{ $student->first_name }}
@@ -92,13 +100,7 @@
                                                 class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-6">
                                                 {{ $student->birth_date }}
                                             </td>
-                                            <td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-6">
-                                              @if($student->photo)
-                                                <img src="data:image/jpeg;base64,{{ base64_encode($student->photo) }}" alt="Student Photo" class="h-10 w-10 rounded-full">
-                                                @else
-                                            <span>No Photo Available</span>
-                                                 @endif
-                                                </td>
+                                        
                                             <!-- <td
                                                 class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-6">
                                                 {{ $student->address }}
