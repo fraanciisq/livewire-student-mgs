@@ -22,6 +22,9 @@ class CreateStudent extends Component
     #[Validate('required')]
     public $address;
 
+    #[Validate('required')]
+    public $photo; // Add the photo property
+
     #[Validate('required|email|unique:students,email')]
     public $email;
 
@@ -35,7 +38,7 @@ class CreateStudent extends Component
    
     {
         $this->validate();
-        
+
         dd('something');
     }
     public function render()
