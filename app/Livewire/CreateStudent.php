@@ -2,6 +2,7 @@
 
 namespace App\Livewire;
 
+use App\Models\Classes;
 use Livewire\Attributes\Validate;
 use Livewire\Component;
 
@@ -41,8 +42,11 @@ class CreateStudent extends Component
 
         dd('something');
     }
+
     public function render()
     {
-        return view('livewire.create-student');
+        return view('livewire.create-student',[
+            'classes' => Classes::all(),
+        ]);
     }
 }
