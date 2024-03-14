@@ -12,8 +12,6 @@ use Livewire\Features\SupportFileUploads\WithFileUploads;
 class CreateStudent extends Component
 {
     use WithFileUploads;
-    
-    protected $debug = true;
 
     #[Validate('required')]
     public $first_name;
@@ -44,25 +42,26 @@ class CreateStudent extends Component
 
     public $sections = [];
 
- public function addStudent()
+    public function addStudent()
+   
+    {
+        $this->validate();
 
-  {
-    $this->validate();
+        Student::create([
+            'class_id' => $this->class_id,
+            'section_id' => $this->section_id,
+            'first_name' => $this->first_name,
+            'middle_name' => $this->middle_name,
+            'last_name' => $this->last_name,
+            'email' => $this->email,
+            'photo' => $this->photo,
+            'address' => $this->address,
+            'birth_date' => $this->birth_date,
 
-    Student::create([
-        'class_id' => $this->form['class_id'],
-        'section_id' => $this->form['section_id'],
-        'first_name' => $this->form['first_name'],
-        'middle_name' => $this->form['middle_name'],
-        'last_name' => $this->form['last_name'],
-        'email' => $this->form['email'],
-        'photo' => $this->form['photo'],
-        'address' => $this->form['address'],
-        'birth_date' => $this->form['birth_date'],
-    ]);
+        ]);
 
-    return $this->redirect(route('students.index'), navigate: true);
-}
+        return $this->redirect(route('students.index'), navigate: true);
+    }
 
     public function updatedClassId($value)
     {
