@@ -6,7 +6,7 @@
                 <!-- Logo -->
                 <div class="shrink-0 flex items-center">
                     <a href="{{ route('dashboard') }}">
-                        <x-application-logo class="block h-9 w-auto fill-current text-gray-800" />
+                    <img src="{{ asset('build/assets/ustl-logo.png') }}" class="block h-9 w-auto" alt="Logo">
                     </a>
                 </div>
 
@@ -15,6 +15,10 @@
                     <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                         {{ __('Dashboard') }}
                     </x-nav-link>
+                    <x-nav-link wire:navigate :href="route('students.index')" :active="request()->routeIs('students.index')">
+                        {{ __('Students') }}
+                    </x-nav-link>
+
                 </div>
             </div>
 

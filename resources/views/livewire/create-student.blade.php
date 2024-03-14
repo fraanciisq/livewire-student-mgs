@@ -1,6 +1,11 @@
 <div class="max-w-7xl mx-auto py-6 sm:px-6 lg:px-8">
     <div class="lg:grid lg:grid-cols-12 lg:gap-x-5">
-        <div class="space-y-6 sm:px-6 lg:px-0 lg:col-span-12">
+                <div class="space-y-6 sm:px-6 lg:px-0 lg:col-span-12">
+                @if (session()->has('message'))
+            <div class="bg-green-200 border-l-4 border-green-600 text-green-700 p-4 mb-4" role="alert">
+                <p>{{ session('message') }}</p>
+            </div>
+               @endif
             <form>
                 <div class="shadow sm:rounded-md sm:overflow-hidden">
                     <div class="bg-white py-6 px-4 space-y-6 sm:p-6">

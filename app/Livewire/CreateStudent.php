@@ -60,8 +60,11 @@ class CreateStudent extends Component
 
         ]);
 
-        return $this->redirect(route('students.index'), navigate: true);
+        session()->flash('message', 'Student created successfully.');
+
+        return redirect()->route('students.index');
     }
+    
 
     public function updatedClassId($value)
     {
