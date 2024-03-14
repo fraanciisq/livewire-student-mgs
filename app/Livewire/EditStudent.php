@@ -33,7 +33,7 @@ class EditStudent extends Component
     #[Validate('required')]
     public $photo; // Add the photo property
 
-    #[Validate('required|email|unique:students,email')]
+
     public $email;
 
     #[Validate('required')]
@@ -58,7 +58,9 @@ class EditStudent extends Component
     public function update()
    
     {
-        $this->validate();
+        $this->validate([
+            'email' => 'required|email|unique:students,email,'. $this->student->id,
+        ]);
 
         $this->student->update([
             'class_id' => $this->class_id,
