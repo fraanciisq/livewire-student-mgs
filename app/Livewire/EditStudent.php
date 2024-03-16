@@ -18,9 +18,10 @@ class EditStudent extends Component
     use WithFileUploads;
 
 
-    #[Validate('required')]
     public $class_id;
 
+
+    public $email;
 
     public function mount()
     {
@@ -28,19 +29,26 @@ class EditStudent extends Component
 
         $this->fill($this->student->only([
             'class_id',
+            'email'
     ]));
  }
 
 
-    public function update()
+    public function updateStudent()
    
     {
+                
+        $this->validate([
+            'email' => 'required|email|unique:students,email,'. $this->student->id,
+            'class_id' => 'required',
+        ]);
 
-        $this->form->updateStudent($this->class_id);
 
-        
-        // return redirect()->route('students.index');
-        return $this->redirect(route('students.index'), navigate: true);
+        $this->form->updateStudent($this->class_id,$this->email);
+
+
+        return redirect()->route('students.index');
+     
     }
     
 

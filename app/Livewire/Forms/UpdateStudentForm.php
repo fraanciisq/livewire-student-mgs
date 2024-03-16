@@ -31,9 +31,6 @@ class UpdateStudentForm extends Form
     #[Validate('required')]
     public $photo; // Add the photo property
 
-    #[Validate('required|email|unique:students,email')]
-    public $email;
-
     #[Validate('required')]
     public $section_id;
 
@@ -42,6 +39,7 @@ class UpdateStudentForm extends Form
     public function setStudent(Student $student)
 
     {
+
         $this->student = $student;
 
         $this->fill($student->only([
@@ -51,7 +49,6 @@ class UpdateStudentForm extends Form
             'address',
             'birth_date',
             'photo',
-            'email',
             'section_id',
         ]));
 
@@ -59,12 +56,10 @@ class UpdateStudentForm extends Form
 
     }
 
-    public function updateStudent($class_id)
+    public function updateStudent($class_id, $email)
     {
   
-        $this->validate([
-            'email' => 'required|email|unique:students,email,'. $this->student->id,
-        ]);
+        $this->validate();
 
         $this->student->update([
             'class_id' => $class_id,
@@ -72,12 +67,13 @@ class UpdateStudentForm extends Form
             'first_name' => $this->first_name,
             'middle_name' => $this->middle_name,
             'last_name' => $this->last_name,
-            'email' => $this->email,
+            'email' => $email,
             'photo' => $this->photo,
             'address' => $this->address,
             'birth_date' => $this->birth_date,
 
         ]);
+
     }
 
     public function setSections($class_id)
