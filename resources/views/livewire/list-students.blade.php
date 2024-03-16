@@ -11,7 +11,7 @@
                     </p>
                 </div>
                 <div class="mt-4 sm:mt-0 sm:ml-16 sm:flex-none">
-                    <a href="{{ route('students.create') }}" 
+                    <a wire:navigate href="{{ route('students.create') }}" 
                      class="inline-flex items-center justify-center rounded-md border border-transparent bg-indigo-600 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 sm:w-auto">
                         Add Student
                     </a>
@@ -117,7 +117,7 @@
                                             </td>
                                             <td
                                                 class="relative whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-6">
-                                                <a href="{{ route('students.edit', $student->id) }}" class="text-indigo-600 hover:text-indigo-900">
+                                                <a wire:navigate href="{{ route('students.edit', $student->id) }}" class="text-indigo-600 hover:text-indigo-900">
                                                     Edit
                                                 </a>
                                                 <button wire:confirm="Are you sure you want to delete this record?"
