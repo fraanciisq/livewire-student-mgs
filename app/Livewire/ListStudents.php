@@ -3,7 +3,6 @@
 namespace App\Livewire;
 
 use App\Models\Student;
-use Livewire\Attributes\Layout;
 use Livewire\Component;
 use Livewire\WithPagination;
 
@@ -17,6 +16,12 @@ class ListStudents extends Component
         return view('livewire.list-students', [
             'students' => Student::paginate(),
         ]);
+
+    }
+
+    public function deleteStudent($studentId)
+    {
+        Student::find($studentId)->delete();
 
     }
 }

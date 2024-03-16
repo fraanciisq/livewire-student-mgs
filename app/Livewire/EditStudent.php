@@ -38,6 +38,7 @@ class EditStudent extends Component
 
         $this->form->updateStudent($this->class_id);
         
+        
         return redirect()->route('students.index');
     }
     
