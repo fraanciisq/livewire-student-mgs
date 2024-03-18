@@ -1,3 +1,12 @@
+<div class="relative">
+    @if(session('success'))
+        <div class="absolute top-0 left-0 m-4">
+            <span class='px-3 py-3 bg-green-600 text-white rounded'> {{ session('success') }} </span>
+        </div>
+    @endif
+
+
+
 <div class="bg-gray-100 py-10">
     <div class="mx-auto max-w-7xl">
         <div class="px-4 sm:px-6 lg:px-8">
@@ -135,3 +144,11 @@
         </div>
     </div>
 </div>
+
+
+    @if(session('success-delete'))
+        <div class="p-4 mb-4 text-sm text-red-800 rounded-lg bg-white"
+         role="alert">
+            <span class='font-medium'> {{ session('success-delete') }} </span>
+        </div>
+    @endif

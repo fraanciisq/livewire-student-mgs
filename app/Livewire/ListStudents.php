@@ -23,5 +23,8 @@ class ListStudents extends Component
     {
         Student::find($studentId)->delete();
 
+        session()->flash('success-delete', 'Record Deleted.');
+
+        return redirect()->route('students.index');
     }
 }

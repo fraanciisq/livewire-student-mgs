@@ -62,7 +62,11 @@ class CreateStudentForm extends Form
             'photo' => $path, // Save the file path instead of the file itself
             'address' => $this->address,
             'birth_date' => $this->birth_date,
+
+            
         ]);
+
+        session()->flash('success', 'User Created Successfully');
     }
 
     public function setSections($class_id)

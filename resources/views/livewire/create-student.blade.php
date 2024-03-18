@@ -1,3 +1,8 @@
+<div>
+        @if(session('success'))
+        <span class='px-3 py-3 bg-green-600 text-white rounded '> {{ session('success') }} </span>
+@endif
+
 <div class="max-w-7xl mx-auto py-6 sm:px-6 lg:px-8">
     <div class="lg:grid lg:grid-cols-12 lg:gap-x-5">
         <div class="space-y-6 sm:px-6 lg:px-0 lg:col-span-12">
