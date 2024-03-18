@@ -11,13 +11,14 @@ use Livewire\Features\SupportFileUploads\WithFileUploads;
 class CreateStudent extends Component
 
 {
-
-   use WithFileUploads;
-
+ 
+    use WithFileUploads;
+    
    public CreateStudentForm $form;
 
     #[Validate('required')]
     public $class_id;
+
 
     public function addStudent()
    
@@ -26,7 +27,7 @@ class CreateStudent extends Component
        
         $this->form->storeStudent($this->class_id);
 
-
+    
         // return redirect()->route('students.index');
         return redirect()->route('students.index');
     }

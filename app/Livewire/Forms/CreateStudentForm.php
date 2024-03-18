@@ -5,12 +5,15 @@ namespace App\Livewire\Forms;
 use App\Models\Section;
 use App\Models\Student;
 use Livewire\Attributes\Validate;
-use Livewire\Features\SupportFileUploads\WithFileUploads;
 use Livewire\Form;
+use Livewire\WithFileUploads;
+use Illuminate\Support\Facades\Storage;
 
 class CreateStudentForm extends Form
 
 {
+
+    use WithFileUploads;
 
     #[Validate('required')]
     public $first_name;
@@ -41,8 +44,14 @@ class CreateStudentForm extends Form
 
     public function storeStudent($class_id)
     {
-        $this->validate();
-
+        $this->validate([
+            'photo' => 'image|max:1024' , //1mb max only
+        ]);
+    
+        // Store the uploaded file in the desired directory
+        $path = $this->photo->store('photos', 'public');
+    
+        // Save the path to the database or use it as needed
         Student::create([
             'class_id' => $class_id,
             'section_id' => $this->section_id,
@@ -50,10 +59,9 @@ class CreateStudentForm extends Form
             'middle_name' => $this->middle_name,
             'last_name' => $this->last_name,
             'email' => $this->email,
-            'photo' => $this->photo,
+            'photo' => $path, // Save the file path instead of the file itself
             'address' => $this->address,
             'birth_date' => $this->birth_date,
-
         ]);
     }
 

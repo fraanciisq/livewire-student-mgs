@@ -78,13 +78,10 @@
                                                 class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-6">
                                                 {{ $student->id }}
                                             </td>
+
                                             <td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-6">
-                                              @if($student->photo)
-                                                <img src="data:image/jpeg;base64,{{ base64_encode($student->photo) }}" alt="Student Photo" class="h-10 w-10 rounded-full">
-                                                @else
-                                            <span>No Photo Available</span>
-                                                 @endif
-                                                </td>
+                                                <img src="{{ asset('storage/' . $student->photo) }}" alt="Student Photo" class="h-10 w-10 rounded-full">
+                                            </td>
                                             <td
                                                 class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-6">
                                                 {{ $student->first_name }}
