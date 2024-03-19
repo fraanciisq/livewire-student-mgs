@@ -7,8 +7,12 @@ use App\Livewire\EditStudent;
 use App\Http\Controllers\StudentController; // Import StudentController
 use Illuminate\Support\Facades\Route;
 
+Route::get('/login', function () {
+    return view('auth.login'); // Assuming your login view is located at resources/views/auth/login.blade.php
+})->name('login');
+
 Route::get('/', function () {
-    return view('welcome');
+    return redirect()->route('login'); // Redirect to the login page
 });
 
 Route::get('/dashboard', function () {
