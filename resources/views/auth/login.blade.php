@@ -1,5 +1,6 @@
 <x-guest-layout>
     <!-- Session Status -->
+    <img src="{{ asset('build/assets/ustl-logo.png') }}" alt="Login Image" class="mx-auto my-4" />
     <x-auth-session-status class="mb-4" :status="session('status')" />
 
     <form method="POST" action="{{ route('login') }}">
