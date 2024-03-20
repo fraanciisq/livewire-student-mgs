@@ -32,11 +32,16 @@
                                 <p><strong>Class:</strong> {{ $student->class->name }}</p>
                                 <p><strong>Birth Date:</strong> {{ $student->birth_date }}</p>
                                 
-                                <!-- View Reports Button -->
-                                <a href="{{ route('students.edit', $student->id) }}" class="absolute bottom-4 right-4 bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">View Details</a>
+                                <!-- View Reports Button (with authentication check) -->
+                                @if(auth()->check() && auth()->user()->email === 'fraanciisq@gmail.com')
+                                    <a href="{{ route('students.edit', $student->id) }}" class="absolute bottom-4 right-4 bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">View Reports</a>
+                                @endif
                             </div>
                         @endforeach
                     </div>
+                    
+                    <!-- Pagination Links (positioned on lower right) -->
+                    <div class="mt-5">{{ $students->links() }}</div>
 
                 </div>
             </div>
