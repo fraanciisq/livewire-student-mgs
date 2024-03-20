@@ -20,44 +20,21 @@
 
                     <!-- Student Information Section -->
                     <h3 class="text-lg font-semibold mb-4">Student Information</h3>
-                    <div class="grid grid-cols-2 gap-4">
-                        <div>
-                            <p><strong>Name:</strong> John Doe</p>
-                            <p><strong>Student ID:</strong> ABC123</p>
-                            <p><strong>Email:</strong> john@example.com</p>
-                        </div>
-                        <div>
-                            <p><strong>Course:</strong> Computer Science</p>
-                            <p><strong>Batch:</strong> 2022</p>
-                            <p><strong>Status:</strong> Active</p>
-                        </div>
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                        @foreach($students as $student)
+                            <div class="border border-gray-200 p-4 rounded-md">
+                                <img src="{{ asset('storage/' . $student->photo) }}" alt="Student Photo" class="h-24 w-24 rounded-full mx-auto mb-4">
+                                <p><strong>Name:</strong> {{ $student->first_name }} {{ $student->middle_name }} {{ $student->last_name }}</p>
+                                <p><strong>Student ID:</strong> {{ $student->id }}</p>
+                                <p><strong>Email:</strong> {{ $student->email }}</p>
+                                <p><strong>Address:</strong> {{ $student->address }}</p>
+                                <p><strong>Section:</strong> {{ $student->section->name }}</p>
+                                <p><strong>Class:</strong> {{ $student->class->name }}</p>
+                                <p><strong>Birth Date:</strong> {{ $student->birth_date }}</p>
+                            </div>
+                        @endforeach
                     </div>
 
-                    <!-- Academic Records Section -->
-                    <h3 class="text-lg font-semibold my-4">Academic Records</h3>
-                    <table class="w-full border-collapse border border-gray-200">
-                        <thead>
-                            <tr>
-                                <th class="border border-gray-200 px-4 py-2">Subject</th>
-                                <th class="border border-gray-200 px-4 py-2">Marks</th>
-                                <th class="border border-gray-200 px-4 py-2">Grade</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td class="border border-gray-200 px-4 py-2">Mathematics</td>
-                                <td class="border border-gray-200 px-4 py-2">85</td>
-                                <td class="border border-gray-200 px-4 py-2">A</td>
-                            </tr>
-                            <tr>
-                                <td class="border border-gray-200 px-4 py-2">Physics</td>
-                                <td class="border border-gray-200 px-4 py-2">78</td>
-                                <td class="border border-gray-200 px-4 py-2">B+</td>
-                            </tr>
-                            <!-- Add more rows as needed -->
-                        </tbody>
-                    </table>
-                    
                     <!-- Actions Section (e.g., Buttons to Add Student, View Reports, etc.) -->
                     <div class="mt-8">
                         <a href="#" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Add Student</a>
