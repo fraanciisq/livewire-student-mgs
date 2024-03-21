@@ -59,7 +59,13 @@ class UpdateStudentForm extends Form
 
     public function updateStudent($class_id, $email)
     {
-  
+        $this->validate([
+            'photo' => 'image|max:1024' , //1mb max only
+        ]);
+    
+        // Store the uploaded file in the desired directory
+        $path = $this->photo->store('photos', 'public');
+    
         $this->validate();
 
         $this->student->update([
@@ -69,7 +75,7 @@ class UpdateStudentForm extends Form
             'middle_name' => $this->middle_name,
             'last_name' => $this->last_name,
             'email' => $email,
-            'photo' => $this->photo,
+            'photo' => $path,
             'address' => $this->address,
             'birth_date' => $this->birth_date,
 
