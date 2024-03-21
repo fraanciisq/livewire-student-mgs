@@ -1,29 +1,46 @@
+<div>
+    @if(session('success'))
+        <span class='px-3 py-3 bg-green-600 text-white rounded '> {{ session('success') }} </span>
+    @endif
 
-<div class="max-w-7xl mx-auto py-6 sm:px-6 lg:px-8">
-    <div class="lg:grid lg:grid-cols-12 lg:gap-x-5">
-        <div class="space-y-6 sm:px-6 lg:px-0 lg:col-span-12">
-            <form wire:submit="updateStudent">
-                <div class="shadow sm:rounded-md sm:overflow-hidden">
-                    <div class="bg-white py-6 px-4 space-y-6 sm:p-6">
-                        <div>
-                            <h3 class="text-lg leading-6 font-medium text-gray-900">
-                                Student Information
-                            </h3>
-                            <p class="mt-1 text-sm text-gray-500">
-                                Use this form to update Student details.
-                            </p>
-                        </div>
-
-                        <div class="grid grid-cols-6 gap-6">
-                            <div class="col-span-6 sm:col-span-2">
-                                <label for="first_name" class="block text-sm font-medium text-gray-700">First Name</label>
-                                <input type="text" id="first_name" wire:model="form.first_name"
-                                    class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm @error('form.first_name') text-red-900 focus:ring-red-500 focus:border-red-500 border-red-300 @enderror" />
-                                @error('form.first_name')
-                                    <p class="mt-1 text-sm text-red-500">{{ $message }}</p>
-                                @enderror
+    <div class="max-w-7xl mx-auto py-6 sm:px-6 lg:px-8">
+        <div class="lg:grid lg:grid-cols-12 lg:gap-x-5">
+            <div class="space-y-6 sm:px-6 lg:px-0 lg:col-span-12">
+                <form wire:submit.prevent="updateStudent">
+                    <div class="shadow sm:rounded-md sm:overflow-hidden">
+                        <div class="bg-white py-6 px-4 space-y-6 sm:p-6">
+                            <div>
+                                <h3 class="text-lg leading-6 font-medium text-gray-900">
+                                    Student Information
+                                </h3>
+                                <p class="mt-1 text-sm text-gray-500">
+                                    Use this form to update Student details.
+                                </p>
                             </div>
 
+                      
+           
+                         <!-- Photo display within a square frame, centered -->
+                             <div class="w-32 h-32 border border-gray-300 rounded-lg overflow-hidden flex items-center justify-center">
+                                @if($photoPath)
+                                    <img src="{{ asset('storage/' . $photoPath) }}" alt="Student Photo" class="max-w-full max-h-full">
+                                @else
+                                    <!-- Display a placeholder or default image if no photo path is available -->
+                                    <img src="{{ asset('path_to_placeholder_image') }}" alt="No Image" class="max-w-full max-h-full">
+                                @endif
+                            </div>
+
+
+                            <!-- Rest of the form fields -->
+                            <div class="grid grid-cols-6 gap-6">
+                                <div class="col-span-6 sm:col-span-2">
+                                    <label for="first_name" class="block text-sm font-medium text-gray-700">First Name</label>
+                                    <input type="text" id="first_name" wire:model="form.first_name"
+                                        class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm @error('form.first_name') text-red-900 focus:ring-red-500 focus:border-red-500 border-red-300 @enderror" />
+                                    @error('form.first_name')
+                                        <p class="mt-1 text-sm text-red-500">{{ $message }}</p>
+                                    @enderror
+                                </div>
                             <div class="col-span-6 sm:col-span-2">
                                 <label for="middle_name" class="block text-sm font-medium text-gray-700">Middle Name</label>
                                 <input type="text" id="middle_name" wire:model="form.middle_name"

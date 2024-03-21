@@ -52,6 +52,7 @@ class UpdateStudentForm extends Form
             'section_id',
         ]));
 
+
     $this->sections = Section::where('class_id', $student->class_id)->get();
 
     }
@@ -73,6 +74,8 @@ class UpdateStudentForm extends Form
             'birth_date' => $this->birth_date,
 
         ]);
+
+        session()->flash('success', 'Updated Successfully');
 
     }
 

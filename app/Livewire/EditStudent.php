@@ -20,19 +20,22 @@ class EditStudent extends Component
 
     public $class_id;
 
-
+    public $photoPath;
     public $email;
 
     public function mount()
     {
         $this->form->setStudent($this->student);
-
+    
         $this->fill($this->student->only([
             'class_id',
             'email'
-    ]));
- }
-
+        ]));
+    
+        // Set the photo path to a variable
+        $this->photoPath = $this->student->photo; // Assuming 'photo' column stores photo path
+    }
+    
 
     public function updateStudent()
    
